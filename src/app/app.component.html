@@ -1,3 +1,28 @@
-<div class="bg-success">SHABLON!!!
-  <i class="fa fa-shopping-cart"></i></div>
-<router-outlet></router-outlet>
+<!--<div class="bg-info p-sm-1">-->
+<!--  There are {{model.getProducts().length}} products in the model-->
+<!--</div>-->
+<!--<router-outlet></router-outlet>-->
+<!--<div [ngClass]="'p-a-1 ' + getClasses()">-->
+<!--  Name: {{model.getProduct(1)?.name || 'None'}}</div>-->
+<!--<div class="form-group m-t-1">-->
+<!--  <label>Name:</label>-->
+<!--  <input class="form-control" [value]="model.getProduct(8)?.name || 'None'" />-->
+<!--</div>-->
+<!--<table class="table table-sm table-bordered table-striped m-t-1">-->
+<!--  <tr>-->
+<!--    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>-->
+<!--  </tr>-->
+<!--  <tr>-->
+<!--    <td [attr.colspan]="model.getProducts().length">-->
+<!--      {{model.getProduct(1)?.name || 'None'}}-->
+<!--    </td>-->
+<!--  </tr>-->
+<!--</table>-->
+<div [class]="getClasses(1)">
+  The first product is {{model.getProduct(1).name}}.
+</div>
+<div class="p-a-1"
+     [class.bg-success]="model.getProduct(2).price < 50"
+     [class.bg-info]="model.getProduct(2).price >= 50">
+  The second product is {{model.getProduct(2).name}}
+</div>

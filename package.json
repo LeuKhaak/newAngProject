@@ -9,9 +9,7 @@
     "test": "ng test",
     "tsc": "tsc",
     "tscwatch": "tsc -w",
-    "lite": "lite-server",
-    "typings": "typings",
-    "postinstall": "typings install"
+    "lite": "lite-server"   
   },
   "private": true,
   "dependencies": {
