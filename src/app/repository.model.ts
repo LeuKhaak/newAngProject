@@ -3,17 +3,22 @@ import { SimpleDataSource } from "./datasource.model";
 export class Model {
   private dataSource: SimpleDataSource;
   private products: Product[];
-  private locator = (p:Product, id:number) => p.id == id;
+  private locator = (p:Product, id?:number) => p.id == id;
   constructor() {
     this.dataSource = new SimpleDataSource();
     this.products = new Array<Product>();
-    this.dataSource.getData().forEach(p => this.products.push(p));
+    this.dataSource.getData().forEach(p => {this.products.push(p)
+    //console.log(p);
+    });
   }
   getProducts(): Product[] {return this.products;
   }
-  getProduct(id: number) : Product {
-    // @ts-ignore
+  getProduct(id: number) : any {
+    if (this.products !== undefined) {
     return this.products.find(p => this.locator(p, id));
+    } else {
+      return  null;
+    }
   }
   saveProduct(product: Product) {
     if (product.id == 0 || product.id == null) {
@@ -21,7 +26,6 @@ export class Model {
       this.products.push(product);
     } else {
       let index = this.products
-        // @ts-ignore
         .findIndex(p => this.locator(p, product.id));
       this.products.splice(index, 1, product);
     }
@@ -38,5 +42,10 @@ export class Model {
       candidate++;
     }
     return candidate;
+  }
+  swapProduct() {
+    let p = this.products.shift();
+    // @ts-ignore
+    this.products.push(new Product(p.id, p.name, p.category, p.price));
   }
 }

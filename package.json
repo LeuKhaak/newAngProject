@@ -9,7 +9,8 @@
     "test": "ng test",
     "tsc": "tsc",
     "tscwatch": "tsc -w",
-    "lite": "lite-server"   
+    "lite": "lite-server",
+    "json": "json-server data.js -p 3500 -m authMiddleware.js"
   },
   "private": true,
   "dependencies": {
@@ -45,6 +46,8 @@
     "typescript": "~4.6.2",
     "lite-server": "2.2.2",
     "typings": "1.3.2",
-    "concurrently": "2.2.0"
+    "concurrently": "2.2.0",
+    "json-server": "0.8.21",
+    "jsonwebtoken": "7.1.9"
   }
 }
