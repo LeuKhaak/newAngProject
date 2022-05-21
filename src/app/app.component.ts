@@ -3,14 +3,21 @@ import { NgForm } from "@angular/forms";
 import { Model } from "./repository.model";
 import { Product } from "./product.model";
 import { ProductFormGroup } from "./form.model";
+import { FormControl, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
 
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html"
 })
 export class AppComponent {
-  model: Model = new Model();
-  form: ProductFormGroup = new ProductFormGroup();
+  model: Model;
+  form: ProductFormGroup;
+  showTable: boolean;
+  constructor() {
+    this.model = new Model();
+    this.form = new ProductFormGroup();
+    this.showTable = false;
+  }
   getProduct(key: number): Product {
     return this.model.getProduct(key);
   }
@@ -18,12 +25,15 @@ export class AppComponent {
     return this.model.getProducts();
   }
   newProduct: Product = new Product();
-  get jsonProduct() {
-    return JSON.stringify(this.newProduct);
-  }
   addProduct(p: Product) {
-    console.log("New Product: " + this.jsonProduct);
+    this.model.saveProduct(p);
   }
+  // get jsonProduct() {
+  //   return JSON.stringify(this.newProduct);
+  // }
+  // addProduct(p: Product) {
+  //   console.log("New Product: " + this.jsonProduct);
+  //}
   // getValidationMessages(state: any, thingName?: string) {
   //   let thing: string = state.path || thingName;
   //   let messages: string[] = [];
@@ -45,7 +55,7 @@ export class AppComponent {
   //   return messages;
   // }
   formSubmitted: boolean = false;
-  submitForm(form: NgForm) {
+  submitForm(form: ProductFormGroup) {
     this.formSubmitted = true;
     if (form.valid) {
       this.addProduct(this.newProduct);
