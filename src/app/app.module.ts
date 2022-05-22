@@ -8,11 +8,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from "@angular/forms";
 import { PaAttrDirective } from "./attr.directive";
 import { PaModel } from "./twoway.directive";
-import {PaStructureDirective} from "./structure.directive"
+import {PaStructureDirective} from "./paif.directive"
+import {PaIteratorDirective} from "./iterator.directive";
 
 
 @NgModule({
-  declarations: [AppComponent, PaAttrDirective, PaModel, PaStructureDirective],
+  declarations: [AppComponent, PaAttrDirective, PaModel, PaStructureDirective, PaIteratorDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,4 +1,4 @@
-import { ApplicationRef, Component } from "@angular/core";
+import { ApplicationRef, Component, Input, OnChanges } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Model } from "./repository.model";
 import { Product } from "./product.model";

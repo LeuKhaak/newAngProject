@@ -1,16 +1,21 @@
 import {
   Directive, SimpleChange, ViewContainerRef, TemplateRef, Input
 } from "@angular/core";
+
 @Directive({
   selector: "[paIf]"
 })
 export class PaStructureDirective {
-  expressionResult: boolean;
+
   constructor(private container: ViewContainerRef,
               private template: TemplateRef<Object>) {
-    this.expressionResult = true;
+    this.expressionResult = false;
   }
+
+
   @Input("paIf")
+
+  expressionResult: boolean;
 
   ngOnChanges(changes: { [property: string]: SimpleChange }) {
     let change = changes["expressionResult"];
